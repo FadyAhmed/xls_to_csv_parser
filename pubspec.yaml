@@ -1,0 +1,5 @@
+name: my_app
+
+dependencies:
+    excel: ^1.1.5
+    csv: ^4.0.3
