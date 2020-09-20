@@ -22,8 +22,7 @@ void main() async {
       // if (row[8].toString().trim() == 'ذكر') totalMale++;
       // if (row[8].toString().trim() == 'انثى' ||
       //     row[8].toString().trim() == 'أنثى') totalFemale++;
-      sections.add(row[4].toString().trim());
-      specs.add(row[6].toString().trim());
+      specs.add(row[6].toString().trim().replaceAll("  ", " "));
     }
   }
   int male;
@@ -37,12 +36,15 @@ void main() async {
     female = 0;
     for (var table in excel.tables.keys) {
       for (var row in excel.tables[table].rows) {
-        if (row[6].toString().trim() == spec.trim()) {
-          if (row[8].toString().trim() == 'ذكر') {
+        if (row[6].toString().trim().replaceAll("  ", " ") == spec.trim()) {
+          if (row[8].toString().trim() == 'ذكر' ||
+              row[8].toString().trim() == 'ذكز' ||
+              row[8].toString().trim() == 'ذكور') {
             male++;
             totalMale++;
           } else if (row[8].toString().trim() == 'انثى' ||
-              row[8].toString().trim() == 'أنثى') {
+              row[8].toString().trim() == 'أنثى' ||
+              row[8].toString().trim() == 'ثى') {
             female++;
             totalFemale++;
           } else {
